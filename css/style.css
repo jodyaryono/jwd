@@ -1,0 +1,56 @@
+body {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-top: 10px;
+}
+
+.header-banner {
+    background-color: #a9d4f8;
+    /* You should adjust the color to match the design */
+    padding: 5px;
+    text-align: center;
+}
+
+.navbar-custom {
+    background-color: #a9d4f8;
+    color:black
+    /* Adjust the color */
+}
+.nav-link{
+    color:black;
+
+}
+
+footer {
+    background-color: #a9d4f8;
+    padding-top: 10px;
+    /* Adjust the color */
+}
+
+
+
+.card-deck{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-img-top {
+    width: 100%;
+    min-height: 200px;
+    object-fit: cover; /* This will make the image cover the full area of the div */
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.bg{
+    width:100%;
+}
+
+
+
+/* Add more custom styles here */
