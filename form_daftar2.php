@@ -44,19 +44,24 @@
 
 <script>
 $(document).ready(function() {
-   
+    //definisi variabel ambil dari daftar.html yang sudah ada parameternya dari paket.html
+    // baris 14 <a href="daftar.html?days=2&accommodation=Y&transportation=Y&service=Y&participants=1"
+    
+    var urlParams = new URLSearchParams(window.location.search);
 
-  // fungsi hitung harga total  
-    function updateCharges() {
-        var participants = $('#participants').val();
-        var days = $('#idtravelDate').val(); // Assume this field contains the number of days
-        var serviceTotal = calculateTotal();
-        $('#packagePrice').val(serviceTotal);
+    $('#idtravelDate').val(urlParams.get('days'));
+    $('#accomodation').prop('checked', urlParams.get('accomodation') === 'Y');
+    $('#transportation').prop('checked', urlParams.get('transportation') === 'Y');
+    $('#service').prop('checked', urlParams.get('service') === 'Y');
+    $('#participants').val(urlParams.get('participants'));
 
-        var totalCharge = participants * days * serviceTotal;
-        $('#totalCharge').val(totalCharge);
-    }
+    var participants = urlParams.get('participants');
+    $('#participants').val(participants ? participants : '1');
 
+    var travelDate = urlParams.get('days');
+    $('#travelDate').val(travelDate ? travelDate : '1');
+
+    updateCharges();
 
     function calculateTotal() {
         var total = 0;
@@ -72,20 +77,34 @@ $(document).ready(function() {
         return total;
     }
 
+    function updateCharges() {
+        var participants = $('#participants').val();
+        var days = $('#idtravelDate').val(); // Assume this field contains the number of days
+        var serviceTotal = calculateTotal();
+        $('#packagePrice').val(serviceTotal);
 
+        var totalCharge = participants * days * serviceTotal;
+        $('#totalCharge').val(totalCharge);
+    }
+
+    $('input[name="transportation"],input[name="accomodation"],input[name="service"], #participants, #travelDate')
+        .change(
+            function() {
+                updateCharges();
+            });
 
     $('#cancelButton').click(function() {
         $('#bookingForm')[0].reset();
         updateCharges();
     });
 
+  //  $('#participants, #idtravelDate').change(function() {
+  //      updateCharges();
+  //  });
 
 
     $('#saveHitung').click(function() {
-       // alert('triger');
-        console.log ('triger')
         updateCharges();
-        console.log($('#totalCharge').val())
     });
 });
 </script>
